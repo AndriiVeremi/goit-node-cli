@@ -18,9 +18,9 @@ program.parse();
 const options = program.opts();
 
 // TODO: рефакторити
-async function invokeAction({ action, id, name, email, phone }) {
+async function invokeAction({ action, id, ...data }) {
   switch (action) {
-    
+
     case "list":
       const allContacts = await listContacts();
       console.log("allContacts", allContacts);
@@ -32,7 +32,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "add":
-      const addNewContact = await addContact(name, email, phone);
+      const addNewContact = await addContact(data);
       console.log("addNewContact", addNewContact);
       break;
 
